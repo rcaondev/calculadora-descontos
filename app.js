@@ -62,9 +62,21 @@ function showModal() {
     $('#dataModal').modal('show');
 }
 
+//Corrigir formato da data:
+
+function formatarData(data) {
+    const partes = data.split('-');
+    if (partes.length !== 3) {
+        return data; // Retorna a data original se não estiver no formato esperado
+    }
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
+}
+
+// Gerar PDF após modal:
+
 function generatePDF() {
     const nome = document.getElementById('nome').value;
-    const dataNascimento = document.getElementById('dataNascimento').value;
+    const dataNascimento = formatarData(document.getElementById('dataNascimento').value);
     const rg = document.getElementById('rg').value;
     const cpf = document.getElementById('cpf').value;
     const idAluno = document.getElementById('idAluno').value;
