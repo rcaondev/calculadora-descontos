@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Parcelas - Faculdade</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Calculadora de Parcelas</h3>
+                <div class="form-group">
+                    <label for="curso">Curso:</label>
+                    <select id="curso" class="form-control">
+                        <option value="7860">Curso Análise e Desenvolvimento de Sistemas - R$ 7.860,00</option>
+                        <option value="10620">Curso Engenharia de Software - R$ 10.620,00</option>
+                        <option value="5220">Curso Banco de Dados - R$ 5.220,00</option>
+                    </select>
+                </div>
+
+            <!--
+            <div class="form-group">
+                <label for="pagamento">Forma de Pagamento:</label>
+                <select id="pagamento" class="form-control">
+                    <option value="pix">Pix - 20% de desconto</option>
+                    <option value="cartao">Cartão de Crédito - 15% de desconto</option>
+                    <option value="cheque">Cheque - 12% de desconto</option>
+                    <option value="boleto">Boleto - 8% de desconto</option>
+                </select>
+            </div>
+            -->
+                <!-- ... (parte do código anterior) -->
+
+                <div class="form-group">
+                    <label>Forma de Pagamento:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pagamento" id="pix" value="pix" checked>
+                        <label class="form-check-label" for="pix">Pix - 20% de desconto (à vista)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pagamento" id="cartao" value="cartao">
+                        <label class="form-check-label" for="cartao">Cartão de Crédito - 15% de desconto</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pagamento" id="cheque" value="cheque">
+                        <label class="form-check-label" for="cheque">Cheque - 12% de desconto</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pagamento" id="boleto" value="boleto">
+                        <label class="form-check-label" for="boleto">Boleto - 8% de desconto</label>
+                    </div>
+                </div>
+
+                <!-- ... (restante do código anterior) -->
+
+
+                <button class="btn btn-primary" onclick="calcularParcelas()">Calcular</button>
+                <div class="mt-4" id="resultado"></div>
+                <button class="btn btn-success mt-3" id="continueBtn" style="display: none;" onclick="showModal()">Continuar
+                    Matrícula</button>
+            </div>
+        </div>
+    </div>
+ 
+
+    <!-- Modal para coleta de dados -->
+    <div class="modal" tabindex="-1" id="dataModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dados para Matrícula</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" class="form-control" id="nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="dataNascimento">Data de Nascimento:</label>
+                        <input type="date" class="form-control" id="dataNascimento">
+                    </div>
+                    <div class="form-group">
+                        <label for="rg">RG:</label>
+                        <input type="text" class="form-control" id="rg">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" class="form-control" id="cpf">
+                    </div>
+                    <div class="form-group">
+                        <label for="idAluno">ID do Aluno:</label>
+                        <input type="text" class="form-control" id="idAluno">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="generatePDF()">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
