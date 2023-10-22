@@ -72,7 +72,7 @@ function formatarData(data) {
     return `${partes[2]}/${partes[1]}/${partes[0]}`;
 }
 
-// Gerar PDF após modal:
+// Gerar PDF após modal:git 
 
 function generatePDF() {
     const nome = document.getElementById('nome').value;
